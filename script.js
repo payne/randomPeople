@@ -1,3 +1,11 @@
+/* TODOs
+
+1. updating table of who was chosen and how many times they have been choosen
+2. Indicator of remaining size of the list
+3. Allow input of people via query parameter on URL or via the GUI.   
+4. Remember people using local storage
+
+*/
 window.addEventListener('DOMContentLoaded', function (event) {
 
   const students = ['Matt', 'Tracey', 'Pascal', 'Cello'];
