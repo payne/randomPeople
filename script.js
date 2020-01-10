@@ -7,6 +7,7 @@
 
 */
 window.addEventListener('DOMContentLoaded', function (event) {
+  console.log(window.location);
   const students = ['Matt', 'Tracey', 'Pascal', 'Cello'];
   let people = Array.from(students);
   const person = document.getElementById('p');
