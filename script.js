@@ -12,18 +12,25 @@ window.addEventListener('DOMContentLoaded', function (event) {
   const person = document.getElementById('p');
   const choose = document.getElementById('c');
   const historyDiv = document.getElementById('history');
-  let history = {};
+  const choiceHistoryDiv = document.getElementById('choiceHistoryDiv');
+  let choiceHistory=[];
+  let historyCount = {};
   choose.addEventListener('click', function (e) {
     e.preventDefault();
     const chosen =  choosePerson();
     person.innerHTML = `<h1>${chosen}</h1>`;
-    history[chosen] = history[chosen] ? history[chosen]+1 : 1;
+    historyCount[chosen] = historyCount[chosen] ? historyCount[chosen]+1 : 1;
+    choiceHistory.push(chosen);
     let lst=`<p>${people.length} this round.</p><ol>\n`;
-    for (const k in history) {
-      lst+=`<li>${k} called on ${history[k]} times</li>\n`;
+    for (const k in historyCount) {
+      lst+=`<li>${k} called on ${historyCount[k]} times</li>\n`;
     }
     lst+="</ol>";
     historyDiv.innerHTML=lst;
+    lst = '<ol>';
+    lst += choiceHistory.map(i => `<li>${i}</li>\n`).join(''); 
+    lst += '</ol>'
+    choiceHistoryDiv.innerHTML=lst;
   });
 
   choosePerson = function () {
