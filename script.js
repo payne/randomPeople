@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', function (event) {
     const chosen =  choosePerson();
     person.innerHTML = `<h1>${chosen}</h1>`;
     history[chosen] = history[chosen] ? history[chosen]+1 : 1;
-    let lst="<ol>\n";
+    let lst=`<p>${people.length} this round.</p><ol>\n`;
     for (const k in history) {
       lst+=`<li>${k} called on ${history[k]} times</li>\n`;
     }
