@@ -7,16 +7,23 @@
 
 */
 window.addEventListener('DOMContentLoaded', function (event) {
-
   const students = ['Matt', 'Tracey', 'Pascal', 'Cello'];
   let people = Array.from(students);
   const person = document.getElementById('p');
-  console.log(person)
   const choose = document.getElementById('c');
-  console.log(choose)
+  const historyDiv = document.getElementById('history');
+  let history = {};
   choose.addEventListener('click', function (e) {
     e.preventDefault();
-    person.innerHTML = `<h1>${choosePerson()}</h1>`;
+    const chosen =  choosePerson();
+    person.innerHTML = `<h1>${chosen}</h1>`;
+    history[chosen] = history[chosen] ? history[chosen]+1 : 1;
+    let lst="<ol>\n";
+    for (const k in history) {
+      lst+=`<li>${k} called on ${history[k]} times</li>\n`;
+    }
+    lst+="</ol>";
+    historyDiv.innerHTML=lst;
   });
 
   choosePerson = function () {
